@@ -1,9 +1,7 @@
 # SpaceXLaunchProgram
 Front-end application which would help users list and browse all launches by SpaceX program.
 
-# Angular7-Projects
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10x.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
 ## Development server
 

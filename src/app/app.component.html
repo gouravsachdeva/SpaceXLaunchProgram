@@ -1,0 +1,66 @@
+<div>
+  <header class="header">
+    <h2>{{title}}</h2>
+  </header>
+  <section>
+    <div class="row">
+      <div class="col-sm-2">
+        <h5>Filters</h5>
+        <p class="left-bar">Launch Year</p>
+        <div class="row button-class-right">
+          <div *ngFor="let year of years" class="col-lg-6 col-md-12 col-6">
+            <button class="button" (click)="filterData(year,'','')">{{year}}</button>
+          </div>
+        </div>
+        <p class="left-bar">Successful Launch</p>
+        <div class="row button-class-right">
+          <div *ngFor="let filter of booleanFilter" class="col-lg-6 col-md-12 col-6">
+            <button class="button" (click)="filterData('',filter.value,'')">{{filter.label}}</button>
+          </div>
+        </div>
+        <p class="left-bar">Successful Landing</p>
+        <div class="row button-class-right">
+          <div *ngFor="let filter of booleanFilter" class="col-lg-6 col-md-12 col-6">
+            <button class="button" (click)="filterData('','',filter.value)">{{filter.label}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <div class="row inner-data" *ngIf="spaceXData != 0">
+          <div *ngFor="let data of spaceXData" class="col-lg-3 col-md-6 col-sm-12">
+            <div class="data-inner">
+              <figure>
+                <img src={{data.links.mission_patch_small}} alt={{data.mission_name}}>
+                <figcaption>{{data.mission_name}} #{{data.flight_number}}</figcaption>
+              </figure>
+              <h6>Mission Ids:
+                <ul *ngIf="data.mission_id.length > 0">
+                  <li *ngFor="let i of data.mission_id">
+                    <span> {{i}}
+                    </span>
+                  </li>
+                </ul>
+              </h6>
+              <h6>Launch Year: <span> {{data.launch_year}} </span></h6>
+              <h6>Successful Launch: <span>{{data.launch_success ? "True" : "False"}} </span></h6>
+              <h6>Successful Landing: <span>{{data.launch_landing ? "True" : "False"}} </span></h6>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="spaceXData == 0">
+          <div class="col-sm-12">
+            <h1 style="text-align: center;padding: 30px 0;">No Data Found</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-6">
+      <span style="text-align: center;"><h6>Developed by: <span style="font-size: 15px; font-weight: 400;">Gourav Sachdeva</span></h6></span>
+    </div>
+  </div>
+</footer>
+<app-loader *ngIf="loader"></app-loader>
